@@ -1,0 +1,76 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Weather api documentation",
+        "description": "Weather api description",
+        "contact": {
+            "email": "admin@admin.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/",
+            "description": "Demo API Server"
+        }
+    ],
+    "paths": {
+        "/api/search/city/{city}": {
+            "get": {
+                "description": "Return list of cities by search criteria",
+                "operationId": "App\\Http\\Controllers\\ApiController::showCity",
+                "parameters": [
+                    {
+                        "name": "city",
+                        "in": "path",
+                        "description": "city name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of cities"
+                    }
+                }
+            }
+        },
+        "/api/weather/{lat}/{long}": {
+            "get": {
+                "description": "Returns information weather of a city by latitude and longitude",
+                "operationId": "App\\Http\\Controllers\\ApiController::showWeather",
+                "parameters": [
+                    {
+                        "name": "lat",
+                        "in": "path",
+                        "description": "latitud",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "long",
+                        "in": "path",
+                        "description": "longitude",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Return weather information"
+                    }
+                }
+            }
+        }
+    }
+}
